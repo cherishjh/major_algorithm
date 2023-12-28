@@ -26,16 +26,25 @@ public class DFSArrayGraph_List {
         adjList.get(b).add(a);
     }
 
-    static void dfs(List<List<Integer>> adjList, int start) {
+    static List<Integer> dfs(List<Integer> path, int start) {
         visited[start] = true;
-        System.out.println(start);
-        for (int i = 0; i < adjList.size(); i++) {
-            for (int j = 0; j < adjList.get(i).size(); j++) {
-                if (visited[adjList.get(i).get(j)] == false) {
-                    dfs(adjList, adjList.get(i).get(j));
-                }
+        path.add(start);
+
+        for (int target : adjList.get(start)) {
+            if (!visited[target]) {
+                dfs(path, target);
             }
         }
+        return path;
     }
-}
 
+   /* static void dfs(List<List<Integer>> adjList, int start) {
+        visited[start] = true;
+        System.out.println(start);
+        for (int i = 0; i < adjList.get(i).size(); i++) {
+                if (visited[adjList.get(start).get(i)] == false) {
+                    dfs(adjList, adjList.get(start).get(i));
+                }
+            }
+        }*/
+    }
