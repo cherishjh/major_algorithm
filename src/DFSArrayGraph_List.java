@@ -17,7 +17,7 @@ public class DFSArrayGraph_List {
             addEdge(a[0], a[1]);
         }
         System.out.println(adjList);
-        dfs(adjList, 0);
+        dfs( 0);
     }
 
 
@@ -26,17 +26,17 @@ public class DFSArrayGraph_List {
         adjList.get(b).add(a);
     }
 
-    static List<Integer> dfs(List<Integer> path, int start) {
-        visited[start] = true;
-        path.add(start);
-
-        for (int target : adjList.get(start)) {
-            if (!visited[target]) {
-                dfs(path, target);
+    static void dfs(int start) {
+        System.out.print(start + ", ");
+        for (Integer target : adjList.get(start)) {
+            visited[start] = true;
+            if (visited[target] == false) {
+                visited[target] = true;
+                dfs(target);
             }
         }
-        return path;
     }
+}
 
    /* static void dfs(List<List<Integer>> adjList, int start) {
         visited[start] = true;
@@ -47,4 +47,4 @@ public class DFSArrayGraph_List {
                 }
             }
         }*/
-    }
+
